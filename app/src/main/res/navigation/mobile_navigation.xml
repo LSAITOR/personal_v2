@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.personal.ui.fragment.CatalogoProductoFragment"
+        android:label="Catalogo producto"
+        tools:layout="@layout/fragment_catalogo_producto" >
+        <action
+            android:id="@+id/action_nav_home_to_registrarTicketFragment"
+            app:destination="@id/registrarTicketFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_empleado"
+        android:name="com.example.personal.ui.fragment.EmpleadoFragment"
+        android:label="Empleados"
+        tools:layout="@layout/fragment_empleado" >
+        <action
+            android:id="@+id/action_nav_empleado_to_operacionEmpleadoFragment"
+            app:destination="@id/operacionEmpleadoFragment" />
+        <action
+            android:id="@+id/action_nav_empleado_to_agregarEmpleadoFragment"
+            app:destination="@id/agregarEmpleadoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/operacionEmpleadoFragment"
+        android:name="com.example.personal.ui.fragment.OperacionEmpleadoFragment"
+        android:label="Editar empleado"
+        tools:layout="@layout/fragment_operacion_empleado" />
+    <fragment
+        android:id="@+id/agregarEmpleadoFragment"
+        android:name="com.example.personal.ui.fragment.AgregarEmpleadoFragment"
+        android:label="Agregar empleado"
+        tools:layout="@layout/fragment_agregar_empleado" />
+    <action
+        android:id="@+id/action_nav_EditarProductoFragment"
+        app:destination="@+id/NuevoProductoFragment"/>
+    <action
+        android:id="@+id/action_nav_AgregarProductoFragment"
+        app:destination="@+id/AgregarProductoFragment"/>
+
+    <fragment
+        android:id="@+id/nav_producto"
+        android:name="com.example.personal.ui.fragment.ProductoFragment"
+        android:label="Productos"
+        tools:layout="@layout/fragment_producto">
+
+        <action
+            android:id="@+id/action_nav_producto_to_operacionProductoFragment"
+            app:destination="@id/operacionProductoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/operacionProductoFragment"
+        android:name="com.example.personal.ui.fragment.OperacionProductoFragment"
+        android:label="Registrar | Editar Producto"
+        tools:layout="@layout/fragment_operacion_producto" />
+
+    <fragment
+        android:id="@+id/registrarTicketFragment"
+        android:name="com.example.personal.ui.fragment.RegistrarTicketFragment"
+        android:label="Registrar ticket"
+        tools:layout="@layout/fragment_registrar_ticket" />
+
+    <fragment
+        android:id="@+id/nav_reporte_ticket"
+        android:name="com.example.personal.ui.fragment.ReporteTicketFragment"
+        android:label="Reporte ticket"
+        tools:layout="@layout/fragment_reporte_ticket" >
+        <action
+            android:id="@+id/action_nav_reporte_ticket_to_reporteDetalleTicketFragment"
+            app:destination="@id/reporteDetalleTicketFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/reporteDetalleTicketFragment"
+        android:name="com.example.personal.ui.fragment.ReporteDetalleTicketFragment"
+        android:label="Detalle del ticket"
+        tools:layout="@layout/fragment_reporte_detalle_ticket" />
+
+</navigation>

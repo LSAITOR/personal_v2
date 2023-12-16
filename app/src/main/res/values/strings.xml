@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">personal</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Catalogo producto</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="version_app">version 1.0.0</string>
+    <string name="menu_empleado">Empleados</string>
+    <string name="cliente">Cliente</string>
+    <string name="detalle_del_ticket">DETALLE DEL TICKET</string>
+    <string name="detalle">Detalle</string>
+    <string name="_0_00">0.00</string>
+    <string name="desde">Desde</string>
+    <string name="hasta">Hasta </string>
+    <string name="total_0_00">TOTAL: 0.00</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
