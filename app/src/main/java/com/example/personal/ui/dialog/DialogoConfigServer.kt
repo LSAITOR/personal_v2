@@ -32,14 +32,16 @@ class DialogoConfigServer: DialogFragment() {
         // Damos valor al binding
         binding = DialogoConfigServerBinding.inflate(onGetLayoutInflater(savedInstanceState))
 
-        // Recuperar la cadena de conexion
-        val cadena = UtilsSecurity.descifrarDato(
-            ProveedorPreferencia.getPreferencia(PreferenciasKey.CONFIGURAR_SERVER) ?: ""
-        ).toString().split(";")
+        // Si existe datos guardado de la cadena de conexion, obtener dicha cadena desencriptada
+        if(ProveedorPreferencia.getPreferencia(PreferenciasKey.CONFIGURAR_SERVER) != ""){
+            // Recuperar la cadena de conexion
+            val cadena = UtilsSecurity.descifrarDato(
+                ProveedorPreferencia.getPreferencia(PreferenciasKey.CONFIGURAR_SERVER) ?: ""
+            ).toString().split(";")
 
-        //Mostrar el valor de la cadena
-        binding.etIpServer.setText(cadena[0])
-        
+            //Mostrar el valor de la cadena
+            binding.etIpServer.setText(cadena[0])
+        }
 
 
         // Asignar el diseño
