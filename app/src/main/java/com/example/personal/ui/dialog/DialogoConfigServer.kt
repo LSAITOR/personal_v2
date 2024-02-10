@@ -41,6 +41,11 @@ class DialogoConfigServer: DialogFragment() {
 
             //Mostrar el valor de la cadena
             binding.etIpServer.setText(cadena[0])
+
+            // Nombre del usuario que se extraera de la variable cadena, en la posicion 2.
+            // Luego usaremo el metodo replace para borrar la palabra "user=" y mostrar solamente el
+            // nombre del usuario registrado.
+            binding.etUsuario.setText(cadena[2].replace("user=", ""))
         }
 
 
