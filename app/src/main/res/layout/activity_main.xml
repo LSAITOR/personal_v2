@@ -21,5 +21,36 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer" />
+        app:menu="@menu/activity_main_drawer" >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/amarillo"
+                android:orientation="vertical"
+                android:layout_gravity="bottom">
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/menu_cerrar_sesion"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:text="Cerrar Sesion"
+                style="@style/Widget.MaterialComponents.Button.TextButton"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/menu_salir"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:text="Salir"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"/>
+
+
+        </LinearLayout>
+
+    </com.google.android.material.navigation.NavigationView>
+
 </androidx.drawerlayout.widget.DrawerLayout>

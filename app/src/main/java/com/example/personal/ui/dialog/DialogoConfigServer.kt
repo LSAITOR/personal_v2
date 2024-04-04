@@ -39,14 +39,27 @@ class DialogoConfigServer: DialogFragment() {
                 ProveedorPreferencia.getPreferencia(PreferenciasKey.CONFIGURAR_SERVER) ?: ""
             ).toString().split(";")
 
+            // Extraer el puerto
+            val ipPuerto = cadena[0].lowercase().replace("jdbc:jtds:sqlserver://", "").split(":")
+
             //Mostrar el valor de la cadena
-            binding.etIpServer.setText(cadena[0])
+            //Convertir a minusculas (lowercase())
+            binding.etIpServer.setText(ipPuerto[0])
+
+            //Mostrar el puerto
+            binding.etPuerto.setText(ipPuerto[1])
 
             // Nombre del usuario que se extraera de la variable cadena, en la posicion 2.
             // Luego usaremo el metodo replace para borrar la palabra "user=" y mostrar solamente el
             // nombre del usuario registrado.
             binding.etUsuario.setText(cadena[2].replace("user=", ""))
+
+            //Muestra la clave del usuario
+            //binding.etClave.setText(cadena[3])
         }
+
+        //ctrl + .    ==> Aumentar la fuente
+        //ctrl + ,    ==> Disminuye la fuente
 
 
         // Asignar el diseño

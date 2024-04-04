@@ -38,7 +38,7 @@ object Conexion {
 
             // Asigna el dato de la conexion al servidor
             /*return DriverManager.getConnection(
-                "jdbc:jtds:sqlserver://192.168.0.6:1433;databaseName=CONSURTARBD;user=Saitorod;password=Daniel08;"
+                "jdbc:jtds:sqlserver://192.168.0.6:1433;databaseName=CONSURTARBD;user=ssaito;password=Daniel08;"
             )*/
 
             return DriverManager.getConnection(

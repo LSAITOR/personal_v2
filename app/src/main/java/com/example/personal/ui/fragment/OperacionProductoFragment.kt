@@ -8,9 +8,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.example.personal.core.UtilsCommon
+import com.example.personal.core.UtilsMessage
 import com.example.personal.data.dao.ProductoDao
 import com.example.personal.data.model.Producto
 import com.example.personal.databinding.FragmentOperacionProductoBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -106,7 +108,7 @@ class OperacionProductoFragment : Fragment() {
             }
 
             if (msgError.trim().isNotEmpty()) {
-                Toast.makeText(requireContext(), msgError, Toast.LENGTH_LONG).show()
+                UtilsMessage.showAlert("ERROR", msgError, requireContext())
             } else {
                 if (result > 0) {
                     // Si logro eliminar el registro

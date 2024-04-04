@@ -7,9 +7,11 @@ import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.example.personal.core.PreferenciasKey
 import com.example.personal.core.ProveedorPreferencia
+import com.example.personal.core.UtilsMessage
 import com.example.personal.data.dao.UsuarioDao
 import com.example.personal.databinding.ActivityLoginBinding
 import com.example.personal.ui.dialog.DialogoConfigServer
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -83,7 +85,9 @@ class LoginActivity : AppCompatActivity() {
 
             // Verificar si existe error
             if (msg.isNotEmpty()) {
-                Toast.makeText(this@LoginActivity, msg, Toast.LENGTH_LONG).show()
+                //Toast.makeText(this@LoginActivity, msg, Toast.LENGTH_LONG).show()
+                UtilsMessage.showAlert("ERROR", msg, this@LoginActivity)
+
                 // Abandonar el proceso
                 return@launch
             }
