@@ -83,5 +83,19 @@
         android:name="com.example.personal.ui.fragment.ReporteDetalleTicketFragment"
         android:label="Detalle del ticket"
         tools:layout="@layout/fragment_reporte_detalle_ticket" />
+    <fragment
+            android:id="@+id/nav_cliente"
+            android:name="com.example.personal.ui.fragment.ClienteFragment"
+            android:label="Clientes"
+            tools:layout="@layout/fragment_cliente" >
+        <action
+                android:id="@+id/action_clienteFragment_to_operacionClienteFragment"
+                app:destination="@id/operacionClienteFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/operacionClienteFragment"
+            android:name="com.example.personal.ui.fragment.OperacionClienteFragment"
+            android:label="Registrar | editar cliente"
+            tools:layout="@layout/fragment_operacion_cliente" />
 
 </navigation>
