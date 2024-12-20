@@ -1,20 +1,27 @@
 package com.example.personal.ui.fragment
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.personal.R
+import com.example.personal.core.UtilsMessage
 import com.example.personal.data.dao.ClienteDao
 import com.example.personal.data.model.Cliente
 import com.example.personal.databinding.FragmentClienteBinding
 import com.example.personal.ui.adapter.ClienteAdapter
+import com.example.personal.ui.dialog.DialogoConfigServer
+import com.example.personal.ui.dialog.InfoClienteDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -51,6 +58,19 @@ class ClienteFragment : Fragment(), ClienteAdapter.IOnClickListener {
                 R.id.action_clienteFragment_to_operacionClienteFragment
             )
         }
+
+        // Vamos a llamar a la funcion leerCliente cada vez que se exista datos en el edittext de buscar
+        binding.etBuscar.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                //leerCliente(s.toString().trim())
+                leerCliente(binding.etBuscar.text.toString().trim())
+            }
+
+        })
 
         // Llamar a la funcion listarCliente
         leerCliente("")
@@ -98,15 +118,66 @@ class ClienteFragment : Fragment(), ClienteAdapter.IOnClickListener {
         }
     }
 
-    override fun clickInfo(cliente: Cliente) {
+    private fun eliminar(cliente: Cliente){
+        var msgError=""
 
+        lifecycleScope.launch {
+            binding.progressBar.isVisible=true
+
+            withContext(Dispatchers.IO){
+                try {
+                    ClienteDao.eliminar(cliente)
+                } catch (e: Exception){
+                    msgError = e.message.orEmpty()
+                }
+            }
+
+            if(msgError.isNotEmpty()){
+                UtilsMessage.showAlert(
+                    "Error", msgError, requireContext()
+                )
+                return@launch
+            }
+
+            Toast.makeText(requireContext(), "Registro eliminado", Toast.LENGTH_LONG).show()
+
+            leerCliente(binding.etBuscar.text.toString().trim())
+
+        }
+    }
+
+    override fun clickInfo(cliente: Cliente) {
+        InfoClienteDialog.newInstance(cliente).show(parentFragmentManager, "InfoCLiente")
     }
 
     override fun clickEditar(cliente: Cliente) {
-
+        Navigation.findNavController(requireView()).navigate(
+            R.id.action_clienteFragment_to_operacionClienteFragment,
+            bundleOf(
+                Pair("id", cliente.id),
+                Pair("nombre", cliente.nombre),
+                Pair("direccion", cliente.direccion),
+                Pair("rfc", cliente.rfc),
+                Pair("email", cliente.email),
+                Pair("estatus", cliente.estatus)
+            )
+        )
     }
 
     override fun clickEliminar(cliente: Cliente) {
+        MaterialAlertDialogBuilder(requireContext()).apply {
+            setTitle("Eliminar")
+            setMessage("¿Esta seguro de eliminar el registro: ${cliente.nombre}?")
+            setCancelable(false)
 
+            setPositiveButton("SI"){ dialog, _ ->
+                eliminar(cliente)
+                dialog.dismiss()
+            }
+
+            setNegativeButton("NO"){ dialog, _ ->
+                dialog.dismiss()
+            }
+        }.create().show()
     }
 }

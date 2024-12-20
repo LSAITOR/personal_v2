@@ -27,6 +27,43 @@ object ClienteDao {
         }
     }
 
+    fun eliminar(entidad: Cliente): Int {
+        try {
+            // crear un prepareStatement con la senetencia
+            val ps = Conexion.getConexion().prepareStatement("delete from cliente where id=?")
+
+            // Asignar valores a los parametros
+            ps.setInt(1, entidad.id)
+
+            // Ejecutar el ps
+            return ps.executeUpdate()
+        } catch (e: Exception){
+            // Lanzar una excepcion hacia la funcion que lo llamo.
+            throw Exception(e.message)
+        }
+    }
+
+    fun actualizar(entidad: Cliente): Int {
+        try {
+            // crear un prepareStatement con la senetencia
+            val ps = Conexion.getConexion().prepareStatement("update cliente SET nombre=?, rfc=?, direccion=?, email =?, estatus=? Where id=?")
+
+            // Asignar valores a los parametros
+            ps.setString(1, entidad.nombre)
+            ps.setString(2, entidad.rfc)
+            ps.setString(3, entidad.direccion)
+            ps.setString(4, entidad.email)
+            ps.setInt(5, entidad.estatus)
+            ps.setInt(6, entidad.id)
+
+            // Ejecutar el ps
+            return ps.executeUpdate()
+        } catch (e: Exception){
+            // Lanzar una excepcion hacia la funcion que lo llamo.
+            throw Exception(e.message)
+        }
+    }
+
     fun listar(dato: String): List<Cliente>{
         // Crear una lista vacia de tipo cliente
         val lista= mutableListOf<Cliente>()

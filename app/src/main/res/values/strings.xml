@@ -22,4 +22,10 @@
     <string name="total_0_00">TOTAL: 0.00</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="registrar_ventas">REGISTRAR VENTAS</string>
+    <string name="menu_detalle_registrar_venta">Permite registrar las ventas de nuestro catalogo de productos</string>
+    <string name="menu_secundario">Menu principal</string>
+    <string name="menu_inicial">Inicio</string>
+    <string name="producto">Productos</string>
+    <string name="menu_catalo_producto">Catalogo de productos</string>
 </resources>
