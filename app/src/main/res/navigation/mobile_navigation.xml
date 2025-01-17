@@ -97,6 +97,7 @@
             android:name="com.example.personal.ui.fragment.OperacionClienteFragment"
             android:label="Registrar | editar cliente"
             tools:layout="@layout/fragment_operacion_cliente" />
+
     <fragment
             android:id="@+id/nav_menu_secundario"
             android:name="com.example.personal.ui.fragment.MenuSecundarioFragment"
@@ -108,6 +109,18 @@
         <action
                 android:id="@+id/action_nav_menu_secundario_to_nav_producto"
                 app:destination="@id/nav_producto" />
+
+        <action
+                android:id="@+id/action_nav_menu_secundario_to_nav_cliente"
+                app:destination="@id/nav_cliente" />
+
+        <action
+                android:id="@+id/action_nav_menu_secundario_to_nav_empleado"
+                app:destination="@id/nav_empleado" />
+
+        <action
+                android:id="@+id/action_nav_menu_secundario_to_nav_reporte_ticket"
+                app:destination="@id/nav_reporte_ticket" />
 
     </fragment>
 

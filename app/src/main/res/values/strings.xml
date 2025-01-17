@@ -28,4 +28,7 @@
     <string name="menu_inicial">Inicio</string>
     <string name="producto">Productos</string>
     <string name="menu_catalo_producto">Catalogo de productos</string>
+    <string name="menu_catalogo_cliente">Catalogo de clientes</string>
+    <string name="reporte_ticket">Reporte de ticket</string>
+    <string name="sub_reporte_ticket">Reporte de ticket segun el rango de fecha</string>
 </resources>

@@ -38,6 +38,18 @@ class MenuSecundarioFragment : Fragment() {
             findNavController().navigate(R.id.action_nav_menu_secundario_to_nav_producto)
         }
 
+        binding.mcvEmpleado.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_menu_secundario_to_nav_empleado)
+        }
+
+        binding.mcvCliente.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_menu_secundario_to_nav_cliente)
+        }
+
+        binding.mcvReporteTicket.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_menu_secundario_to_nav_reporte_ticket)
+        }
+
     }
 
 
